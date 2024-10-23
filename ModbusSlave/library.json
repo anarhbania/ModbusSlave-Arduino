@@ -1,0 +1,26 @@
+{
+    "name": "ModbusSlave",
+    "frameworks": "arduino",
+    "keywords": "modbus, rtu, serial, supla",
+    "description": "Library for connect MCU to Modbus RTU in slave mode",
+    "url": "https://github.com/anarhbania/ArduinoIDE/ModbusSlave",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcin Bania",
+            "url": "https://github.com/anarhbania"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/anarhbania/ArduinoIDE/ModbusSlave"
+    },
+    "platforms": "atmelavr, ststm32, espressif8266, espressif32",
+    "version": "1.0.4",
+    "export": {
+        "include": [
+            "src/*",
+            "examples/*"
+        ]
+    }
+}
