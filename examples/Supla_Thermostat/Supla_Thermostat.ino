@@ -66,11 +66,6 @@ void setup()
   SuplaDevice.setSupla3rdPartyCACert(supla3rdCACert);
 
   SuplaDevice.begin();
-
-  if(suplaThermostat->isManualModeEnabled())
-  {
-    suplaThermostat->turnOnWeeklySchedlue();
-  }
 }
 
 void loop()
