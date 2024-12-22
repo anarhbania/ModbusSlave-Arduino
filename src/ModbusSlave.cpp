@@ -155,7 +155,7 @@ uint8_t ModbusSlave::Update(void)
 			}
 		}
 	}
-	else if(millis() - lastTimeout > 30000)
+	else if(millis() - lastTimeout > timeout)
 	{
 		alarm = ALARM_COMMUNICATION;
 	}
