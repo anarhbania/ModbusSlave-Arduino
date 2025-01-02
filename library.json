@@ -1,0 +1,20 @@
+{
+  "name": "ModbusSlave",
+  "keywords": "Communication, Modbus RTU, RS232, RS485",
+  "description": "Library for connect MCU to Modbus RS485 RTU in slave mode",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/anarhbania/ModbusSlave-Arduino"
+  },
+  "version": "1.0.9",
+  "frameworks": "arduino",
+  "platforms": ["atmelavr", "atmelmegaavr", "atmelsam", "espressif8266", "espressif32", "ststm32"],
+  "authors" :
+  [
+     {
+       "name":"Marcin Bania",
+       "url": "https://github.com/anarhbania"
+     },
+  ],
+}
