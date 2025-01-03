@@ -55,7 +55,7 @@ void loop()
 
   Slave.Update();
   
-  static uint64_t lastTime = 0;
+  static uint32_t lastTime = 0;
   if(millis() - lastTime > 1000) 
   {
     lastTime = millis();
