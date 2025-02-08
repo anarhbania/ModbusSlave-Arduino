@@ -57,7 +57,7 @@ void loop()
   {
     if(Slave.Update() == ALARM_COMMUNICATION)
     {
-
+      Serial.println("ALARM COMMUNICATION");
     }
 
     static uint32_t lastTime = 0;
