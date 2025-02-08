@@ -63,17 +63,23 @@ void loop()
 {
   SuplaDevice.iterate();
 
-  Slave.Update();
-  
-  static uint32_t lastTime = 0;
-  if(millis() - lastTime > 1000) 
+  if(SuplaDevice.getCurrentStatus() == STATUS_REGISTERED_AND_READY)
   {
-    lastTime = millis();
+    if(Slave.Update() == ALARM_COMMUNICATION)
+    {
 
-    slaveTable[HOUR] = Supla::Clock::GetHour();
-    slaveTable[MINUTES] = Supla::Clock::GetMin();
-    slaveTable[DAY] = Supla::Clock::GetDay();
-    slaveTable[MONTH] = Supla::Clock::GetMonth();
-    slaveTable[YEAR] = Supla::Clock::GetYear();
+    }
+
+    static uint32_t lastTime = 0;
+    if(millis() - lastTime > 1000) 
+    {
+      lastTime = millis();
+
+      slaveTable[HOUR] = Supla::Clock::GetHour();
+      slaveTable[MINUTES] = Supla::Clock::GetMin();
+      slaveTable[DAY] = Supla::Clock::GetDay();
+      slaveTable[MONTH] = Supla::Clock::GetMonth();
+      slaveTable[YEAR] = Supla::Clock::GetYear();
+    }
   }
 }

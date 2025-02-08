@@ -53,16 +53,19 @@ void loop()
 {
   SuplaDevice.iterate();
 
-  if(Slave.Update() == ALARM_COMMUNICATION)
+  if(SuplaDevice.getCurrentStatus() == STATUS_REGISTERED_AND_READY)
   {
+    if(Slave.Update() == ALARM_COMMUNICATION)
+    {
 
-  }
+    }
 
-  static uint32_t lastTime = 0;
-  if(millis() - lastTime > 1000) 
-  {
-    lastTime = millis();
+    static uint32_t lastTime = 0;
+    if(millis() - lastTime > 1000) 
+    {
+      lastTime = millis();
 
-    slaveTable[NETWORK_READY] = Supla::Network::IsReady();
+      slaveTable[NETWORK_READY] = Supla::Network::IsReady();
+    }
   }
 }

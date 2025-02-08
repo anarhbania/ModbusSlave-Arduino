@@ -76,17 +76,23 @@ void loop()
 {
   SuplaDevice.iterate();
 
-  Slave.Update();
-  
-  static uint32_t lastTime = 0;
-  if(millis() - lastTime > 1000) 
+  if(SuplaDevice.getCurrentStatus() == STATUS_REGISTERED_AND_READY)
   {
-    lastTime = millis();
+    if(Slave.Update() == ALARM_COMMUNICATION)
+    {
 
-    slaveTable[THERMOSTAT_ON] = !suplaThermostat->isThermostatDisabled();
-    slaveTable[THERMOSTAT_MANUAL] = suplaThermostat->isManualModeEnabled();
-    slaveTable[THERMOSTAT_SETPOINT] = (uint16_t)suplaThermostat->getTemperatureSetpointHeat();
-    suplaThermometer->setValue(Slave.ConversionToFloat(slaveTable[THERMOMETER + 1], slaveTable[THERMOMETER]));
-    suplaGpm->setValue(slaveTable[GPM]);
+    }
+
+    static uint32_t lastTime = 0;
+    if(millis() - lastTime > 1000) 
+    {
+      lastTime = millis();
+
+      slaveTable[THERMOSTAT_ON] = !suplaThermostat->isThermostatDisabled();
+      slaveTable[THERMOSTAT_MANUAL] = suplaThermostat->isManualModeEnabled();
+      slaveTable[THERMOSTAT_SETPOINT] = (uint16_t)suplaThermostat->getTemperatureSetpointHeat();
+      suplaThermometer->setValue(Slave.ConversionToFloat(slaveTable[THERMOMETER + 1], slaveTable[THERMOMETER]));
+      suplaGpm->setValue(slaveTable[GPM]);
+    }
   }
 }

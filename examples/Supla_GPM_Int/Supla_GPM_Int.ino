@@ -75,22 +75,28 @@ void loop()
 {
   SuplaDevice.iterate();
 
-  Slave.Update();
-  
-  static uint32_t lastTime = 0;
-  if(millis() - lastTime > 1000) 
+  if(SuplaDevice.getCurrentStatus() == STATUS_REGISTERED_AND_READY)
   {
-    lastTime = millis();
+    if(Slave.Update() == ALARM_COMMUNICATION)
+    {
 
-    suplaGpm0->setValue(slaveTable[VARIABLE_0]);
-    suplaGpm1->setValue(slaveTable[VARIABLE_1]);
-    suplaGpm2->setValue(slaveTable[VARIABLE_2]);
-    suplaGpm3->setValue(slaveTable[VARIABLE_3]);
-    suplaGpm4->setValue(slaveTable[VARIABLE_4]);
-    suplaGpm5->setValue(slaveTable[VARIABLE_5]);
-    suplaGpm6->setValue(slaveTable[VARIABLE_6]);
-    suplaGpm7->setValue(slaveTable[VARIABLE_7]);
-    suplaGpm8->setValue(slaveTable[VARIABLE_8]);
-    suplaGpm9->setValue(slaveTable[VARIABLE_9]);
+    }
+
+    static uint32_t lastTime = 0;
+    if(millis() - lastTime > 1000) 
+    {
+      lastTime = millis();
+
+      suplaGpm0->setValue(slaveTable[VARIABLE_0]);
+      suplaGpm1->setValue(slaveTable[VARIABLE_1]);
+      suplaGpm2->setValue(slaveTable[VARIABLE_2]);
+      suplaGpm3->setValue(slaveTable[VARIABLE_3]);
+      suplaGpm4->setValue(slaveTable[VARIABLE_4]);
+      suplaGpm5->setValue(slaveTable[VARIABLE_5]);
+      suplaGpm6->setValue(slaveTable[VARIABLE_6]);
+      suplaGpm7->setValue(slaveTable[VARIABLE_7]);
+      suplaGpm8->setValue(slaveTable[VARIABLE_8]);
+      suplaGpm9->setValue(slaveTable[VARIABLE_9]);
+    }
   }
 }
